@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen & Confiance - Gestion du Stress et Bien-être</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Meta tags pour réseaux sociaux -->
+    <meta property="og:title" content="Zen & Confiance - Vaincre le stress et la timidité">
+    <meta property="og:description" content="Application pour surmonter la peur de parler en public, gérer le stress des soutenances et gagner en confiance sociale.">
+    <meta property="og:type" content="website">
+
+    <style>
+        .animate-pulse-slow {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            transition: transform 0.3s ease;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .scale-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+
+    <!-- Page d'accueil -->
+    <div id="homePage" class="show">
+        <!-- Header -->
+        <div class="bg-white shadow-sm p-4">
+            <div class="max-w-4xl mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center animate-pulse-slow">
+                        <span style="font-size: 24px;">❤</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-800">Zen & Confiance</h1>
+                </div>
+                <div class="text-sm text-gray-600">Votre allié contre le stress</div>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="max-w-4xl mx-auto p-6">
+            <!-- Section de bienvenue -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8 hover-lift">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                    Transformez votre peur en confiance
+                </h2>
+                <p class="text-gray-600 text-lg mb-6">
+                    Que ce soit pour une soutenance de doctorat, une prise de parole en public, ou simplement gagner en aisance avec vos amis - nous avons les outils pour vous aider.
+                </p>
+
+                <!-- Évaluation rapide -->
+                <div class="gradient-bg rounded-xl p-6 text-white mb-6">
+                    <h3 class="text-xl font-semibold mb-3">Évaluation rapide</h3>
+                    <p class="mb-4">Sur une échelle de 1 à 10, quel est votre niveau de stress actuel ?</p>
+                    <div class="flex gap-2 mb-4 flex-wrap" id="stressButtons">
+                        <button onclick="selectStressLevel(1)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">1</button>
+                        <button onclick="selectStressLevel(2)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">2</button>
+                        <button onclick="selectStressLevel(3)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">3</button>
+                        <button onclick="selectStressLevel(4)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">4</button>
+                        <button onclick="selectStressLevel(5)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">5</button>
+                        <button onclick="selectStressLevel(6)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">6</button>
+                        <button onclick="selectStressLevel(7)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">7</button>
+                        <button onclick="selectStressLevel(8)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">8</button>
+                        <button onclick="selectStressLevel(9)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">9</button>
+                        <button onclick="selectStressLevel(10)" class="stress-btn w-10 h-10 rounded-lg border-2 border-white/30 hover:border-white transition-all hover:scale-110">10</button>
+                    </div>
+                    <div id="stressResult" class="bg-white/10 backdrop-blur-sm rounded-lg p-4 hidden">
+                        <p id="stressMessage" class="text-sm"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Situations -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Choisissez votre situation</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div onclick="goToSituation()" class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer group hover-lift">
+                        <div class="bg-blue-500 rounded-lg p-3 inline-block mb-4 group-hover:scale-110 transition-transform">
+                            <span style="font-size: 24px; color: white;">🎤</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Soutenance / Présentation</h4>
+                        <p class="text-gray-600 mb-4">Préparez-vous pour vos présentations académiques et professionnelles</p>
+                        <div class="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+                            Commencer <span class="ml-2">→</span>
+                        </div>
+                    </div>
+
+                    <div onclick="goToSituation()" class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer group hover-lift">
+                        <div class="bg-green-500 rounded-lg p-3 inline-block mb-4 group-hover:scale-110 transition-transform">
+                            <span style="font-size: 24px; color: white;">👥</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Cercle d'amis</h4>
+                        <p class="text-gray-600 mb-4">Gagnez en confiance dans vos interactions sociales</p>
+                        <div class="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+                            Commencer <span class="ml-2">→</span>
+                        </div>
+                    </div>
+
+                    <div onclick="goToSituation()" class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer group hover-lift">
+                        <div class="bg-purple-500 rounded-lg p-3 inline-block mb-4 group-hover:scale-110 transition-transform">
+                            <span style="font-size: 24px; color: white;">🏆</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Assemblée publique</h4>
+                        <p class="text-gray-600 mb-4">Maîtrisez la prise de parole devant un large public</p>
+                        <div class="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+                            Commencer <span class="ml-2">→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Techniques express -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8 hover-lift">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Techniques express</h3>
+                <p class="text-gray-600 mb-6">Besoin d'une solution immédiate ? Essayez ces exercices rapides.</p>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all hover-lift">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-semibold text-gray-800">Respiration 4-7-8</h4>
+                            <span style="font-size: 20px;">▶</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span>2 min</span>
+                            <span>⭐ Facile</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors scale-hover">
+                            Regarder la vidéo
+                        </button>
+                    </div>
+
+                    <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all hover-lift">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-semibold text-gray-800">Visualisation positive</h4>
+                            <span style="font-size: 20px;">▶</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span>5 min</span>
+                            <span>⭐ Moyen</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors scale-hover">
+                            Regarder la vidéo
+                        </button>
+                    </div>
+
+                    <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all hover-lift">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-semibold text-gray-800">Ancrage corporel</h4>
+                            <span style="font-size: 20px;">▶</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 mb-3">
+                            <span>3 min</span>
+                            <span>⭐ Facile</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors scale-hover">
+                            Regarder la vidéo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section de partage social -->
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📢 Partagez avec vos proches</h3>
+
+                <div class="flex justify-center gap-4 mb-4">
+                    <button onclick="shareOnFacebook()" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-all scale-hover" title="Partager sur Facebook">
+                        <span style="font-size: 20px;">📘</span>
+                    </button>
+                    <button onclick="shareOnWhatsApp()" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition-all scale-hover" title="Partager sur WhatsApp">
+                        <span style="font-size: 20px;">💬</span>
+                    </button>
+                    <button onclick="shareOnTwitter()" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-all scale-hover" title="Partager sur Twitter">
+                        <span style="font-size: 20px;">🐦</span>
+                    </button>
+                    <button onclick="shareOnLinkedIn()" class="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-all scale-hover" title="Partager sur LinkedIn">
+                        <span style="font-size: 20px;">💼</span>
+                    </button>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-gray-600 text-sm">
+                        Aidez d'autres personnes à surmonter leur stress et leur timidité !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page de situation -->
+    <div id="situationPage" class="hidden">
+        <div class="max-w-4xl mx-auto p-6">
+            <button onclick="goToHome()" class="mb-6 flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                ← Retour à l'accueil
+            </button>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Programme Soutenance & Présentation</h2>
+
+                <!-- Barre de progression -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-sm text-gray-600 mb-2">
+                        <span>Votre progression</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Étapes du module -->
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center p-4 rounded-lg border-2 border-green-200 bg-green-50 hover-lift">
+                        <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center mr-4 text-sm font-bold">
+                            ✅
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-800">Analyse de votre peur</h3>
+                            <p class="text-sm text-gray-600">5 min</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-4 rounded-lg border-2 border-blue-200 bg-blue-50 hover-lift">
+                        <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-4 text-sm font-bold">
+                            2
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-800">Préparation mentale</h3>
+                            <p class="text-sm text-gray-600">10 min</p>
+                        </div>
+                        <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all scale-hover">
+                            Continuer
+                        </button>
+                    </div>
+
+                    <div class="flex items-center p-4 rounded-lg border-2 border-gray-200 bg-gray-50">
+                        <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mr-4 text-sm font-bold">
+                            3
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-800">Techniques de respiration</h3>
+                            <p class="text-sm text-gray-600">8 min</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-4 rounded-lg border-2 border-gray-200 bg-gray-50">
+                        <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mr-4 text-sm font-bold">
+                            4
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-800">Simulation pratique</h3>
+                            <p class="text-sm text-gray-600">15 min</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-4 rounded-lg border-2 border-gray-200 bg-gray-50">
+                        <div class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mr-4 text-sm font-bold">
+                            5
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-gray-800">Jour J - Kit d'urgence</h3>
+                            <p class="text-sm text-gray-600">3 min</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zone d'intégration vidéo -->
+                <div class="p-6 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative text-center text-white">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                            <span style="font-size: 40px;">▶</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Studio Vidéo Professionnel</h3>
+                        <p class="text-blue-100 mb-6 text-lg">Contenus créés avec expertise publicitaire pour un impact maximum</p>
+
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover-lift">
+                                <h4 class="font-semibold mb-2">🎬 Témoignages Impact</h4>
+                                <p class="text-sm text-blue-100">"De la terreur à la réussite" - Avant/après doctorante</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover-lift">
+                                <h4 class="font-semibold mb-2">💨 Respiration Guidée</h4>
+                                <p class="text-sm text-blue-100">Techniques filmées en gros plan, montage rythmé</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover-lift">
+                                <h4 class="font-semibold mb-2">🎯 Simulation Réelle</h4>
+                                <p class="text-sm text-blue-100">Questions piège de jury, réponses parfaites</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover-lift">
+                                <h4 class="font-semibold mb-2">⚡ Messages Flash</h4>
+                                <p class="text-sm text-blue-100">Motivation instantanée, format publicitaire</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 justify-center">
+                            <button class="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transition-all scale-hover">
+                                📹 Voir Démo
+                            </button>
+                            <button onclick="shareOnFacebook()" class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition-all scale-hover">
+                                📤 Partager
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let currentStressLevel = 0;
+
+        // Fonction pour sélectionner le niveau de stress
+        function selectStressLevel(level) {
+            currentStressLevel = level;
+
+            // Réinitialiser tous les boutons
+            const buttons = document.querySelectorAll('.stress-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'text-blue-600');
+                btn.classList.add('border-white/30');
+            });
+
+            // Mettre en surbrillance le bouton sélectionné
+            event.target.classList.add('bg-white', 'text-blue-600');
+            event.target.classList.remove('border-white/30');
+
+            // Afficher le résultat
+            const resultDiv = document.getElementById('stressResult');
+            const messageP = document.getElementById('stressMessage');
+
+            let message = '';
+            if (level <= 3) {
+                message = "✅ Niveau faible - Parfait pour la prévention !";
+            } else if (level <= 6) {
+                message = "⚠ Niveau modéré - Nous pouvons vous aider à améliorer cela.";
+            } else {
+                message = "🚨 Niveau élevé - Commençons par des techniques d'urgence.";
+            }
+
+            messageP.textContent = message;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // Navigation entre les pages
+        function goToSituation() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('situationPage').classList.remove('hidden');
+        }
+
+        function goToHome() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('situationPage').classList.add('hidden');
+        }
+
+        // Fonctions de partage social
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const shareUrl = https: //www.facebook.com/sharer/sharer.php?u=${url};
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent('Découvrez Zen & Confiance pour vaincre le stress et la timidité !');
+            const url = encodeURIComponent(window.location.href);
+            const shareUrl = https: //wa.me/?text=${text} ${url};
+                window.open(shareUrl, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const text = encodeURIComponent('Découvrez Zen & Confiance pour vaincre le stress et la timidité !');
+            const url = encodeURIComponent(window.location.href);
+            const shareUrl = https: //twitter.com/intent/tweet?url=${url}&text=${text};
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const shareUrl = https: //www.linkedin.com/sharing/share-offsite/?url=${url};
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        // Animation au chargement
+        window.addEventListener('load', function() {
+            console.log('Zen & Confiance chargé avec succès !');
+        });
+    </script>
+</body>
+
+</html>
